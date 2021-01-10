@@ -1,9 +1,8 @@
 ﻿namespace OurRecipes.Web.Areas.Administration.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
     using OurRecipes.Services.Data;
     using OurRecipes.Web.ViewModels.Administration.Dashboard;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController
     {
