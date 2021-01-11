@@ -36,4 +36,9 @@
     <ProjectReference Include="..\OurRecipes.Web.Infrastructure\OurRecipes.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\OurRecipes.Web.ViewModels\OurRecipes.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\AboutUs\" />
+    <Folder Include="Views\RecipeInfo\" />
+  </ItemGroup>
 </Project>
