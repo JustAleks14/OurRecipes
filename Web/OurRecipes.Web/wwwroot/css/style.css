@@ -135,7 +135,7 @@ img {
 
 /* Section Padding */
 .section-padding-80 {
-  padding-top: 80px;
+  padding-top: 20px;
   padding-bottom: 80px; }
 
 .section-padding-80-0 {
@@ -1056,18 +1056,19 @@ textarea:focus {
   height: 30px;
   background-color: #f3f5f8; }
 .ingredients .custom-control {
-  padding-left: 2.5rem;
+  padding-left: 1rem;
   margin-bottom: 30px;
   min-height: 35px; }
 .ingredients .custom-control-label {
   margin-bottom: 0;
   padding-top: 5px;
+  padding-left: 20px;
   font-size: 16px;
   font-weight: 600;
   color: #2f2f2f; }
 .ingredients .custom-control-label::after {
   top: 10px;
-  left: 5px;
+  left: -18px;
   width: 20px;
   height: 20px; }
 .ingredients .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
