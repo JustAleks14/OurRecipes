@@ -13,6 +13,7 @@
         {
             this.Comments = new HashSet<Comment>();
             this.Ingredients = new HashSet<Ingredient>();
+            this.Steps = new HashSet<Step>();
         }
 
         public string Name { get; set; }
@@ -27,13 +28,13 @@
 
         public int MealCount { get; set; }
 
-        public string Steps { get; set; }
-
         public int Rating { get; set; }
 
         public int MyProperty { get; set; }
 
         public string Image { get; set; }
+
+        public ICollection<Step> Steps { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
 
