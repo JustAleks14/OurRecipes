@@ -39,6 +39,5 @@
 
   <ItemGroup>
     <Folder Include="Views\AboutUs\" />
-    <Folder Include="Views\RecipeInfo\" />
   </ItemGroup>
 </Project>

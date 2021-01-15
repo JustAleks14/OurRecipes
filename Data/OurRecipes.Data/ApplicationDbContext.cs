@@ -33,6 +33,8 @@
 
         public virtual DbSet<RecipeIngredient> RecipeIngredients { get; set; }
 
+        public virtual DbSet<Step> Steps { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

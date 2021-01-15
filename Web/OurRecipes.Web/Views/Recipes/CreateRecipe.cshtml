@@ -1,0 +1,78 @@
+﻿@using OurRecipes.Data.Models.Enums
+@model OurRecipes.Web.ViewModels.Recipes.RecipeInputModel
+@{
+    this.ViewData["Title"] = "Create Recipe";
+}
+
+<form method="post" class="col-md-6 offset-md-3">
+    <h1 class="text-center">@this.ViewData["Title"]</h1>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Time"></label>
+        <input asp-for="Time" class="form-control" />
+        <span asp-validation-for="Time" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Type"></label>
+        <input asp-for="Type" class="form-control" />
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DifficultyLevel"></label>
+        <select asp-for="DifficultyLevel" class="form-control" asp-items="Html.GetEnumSelectList<DifficultyLevel>()">
+            <option>Choose Difficulty Level</option>
+        </select>
+        <span asp-validation-for="DifficultyLevel" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MealCount"></label>
+        <input asp-for="MealCount" class="form-control" />
+        <span asp-validation-for="MealCount" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Image"></label>
+        <input asp-for="Image" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <div class="form-group" id="IngredientsContainer">
+        <label asp-for="Ingredients"></label>
+        <a class="btn btn-success" onclick="AddIngredient()">Add</a>
+    </div>
+
+    <div class="form-group" id="StepsContainer">
+        <label asp-for="Steps"></label>
+        <a class="btn btn-success" onclick="AddSteps()">Add</a>
+    </div>
+
+    <input type="submit" class="btn-primary" />
+</form>
+
+@section Scripts
+{
+    <script>
+        var ingredientIndex = 0;
+        function AddIngredient() {
+            $("#IngredientsContainer")
+                .append("<div class='form-control'>Name: <input type='text' name='Ingredients[" + ingredientIndex + "]' /></div>");
+            ingredientIndex++;
+        }
+
+        var stepIndex = 0;
+        function AddSteps() {
+            $("#StepsContainer")
+                .append("<div class='form-control'>Name: <input type='text' name='Ingredients[" + stepIndex + "]' /></div>");
+            stepIndex++;
+        }
+    </script>
+}
