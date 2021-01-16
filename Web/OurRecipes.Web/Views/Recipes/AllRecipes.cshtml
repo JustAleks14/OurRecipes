@@ -16,11 +16,11 @@
                              <img src="@recipe.Image" alt="">
                          </div>
                          <div class="receipe-content">
-                             <span>@recipe.CreatedOn</span>
+                             <span>@recipe.CreatedOn.ToLocalTime()</span>
                              <a asp-controller="Recipes" asp-action="Index" asp-route-id="@recipe.Id">
                                  <h5>@recipe.Name</h5>
                              </a>
-                             <p>@recipe.CommentsCount</p>
+                             @*<p>@recipe.CommentsCount</p>*@
                          </div>
                      </div>
                  </div>
@@ -30,6 +30,3 @@
 </section>
 <hr/>
 <partial name="_PagingPartial" model="@Model" />
-
-@Model.RecipesCount
-@Model.PagesCount

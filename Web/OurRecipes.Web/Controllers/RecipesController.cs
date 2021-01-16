@@ -2,7 +2,7 @@
 {
     using System.Security.Claims;
     using System.Threading.Tasks;
-
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using OurRecipes.Data.Models;
@@ -27,12 +27,14 @@
             return this.View(info);
         }
 
+        [Authorize]
         public IActionResult CreateRecipe()
         {
             return this.View();
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateRecipe(RecipeInputModel input)
         {
             var user = await this.userManager.GetUserAsync(this.User);
@@ -40,6 +42,7 @@
             return this.RedirectToAction("AllRecipes");
         }
 
+        [Authorize]
         public IActionResult AllRecipes(int id = 1)
         {
             if (id <= 0)

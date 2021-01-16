@@ -11,9 +11,12 @@
         public RecipeInfoViewModel()
         {
             this.Steps = new List<Step>();
+            this.Ingredients = new List<Ingredient>();
         }
 
         public string Image { get; set; }
+
+        public string Name { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
