@@ -3,13 +3,27 @@
     using System.Diagnostics;
 
     using Microsoft.AspNetCore.Mvc;
+    using OurRecipes.Services.Data;
     using OurRecipes.Web.ViewModels;
+    using OurRecipes.Web.ViewModels.Recipes;
 
     public class HomeController : BaseController
     {
+        private readonly IRecipesService recipesService;
+
+        public HomeController(IRecipesService recipesService)
+        {
+            this.recipesService = recipesService;
+        }
+
         public IActionResult Index()
         {
-            return this.View();
+            int recipesCount = this.recipesService.GetCount();
+            var viewModel = new RecipesListViewModel
+            {
+                Recipes = this.recipesService.GetAll(recipesCount),
+            };
+            return this.View(viewModel);
         }
 
         public IActionResult Privacy()
