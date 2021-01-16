@@ -18,6 +18,6 @@
 
         public DateTime CreatedOn { get; set; }
 
-        //public int Comments { get; set; }
+        public int CommentsCount { get; set; }
     }
 }

@@ -20,7 +20,7 @@
                             <a href="receipe-post.html">
                                 <h5>@recipe.Name</h5>
                             </a>
-                            @*<p>@recipe.Comments</p>*@
+                            <p>@recipe.CommentsCount</p>
                         </div>
                     </div>
                 </div>
@@ -29,36 +29,7 @@
     </div>
 </section>
 <hr/>
-<nav aria-label="...">
-    <ul class="pagination justify-content-center">
-        <li class="page-item" @if (!Model.HasPreviousPage) { <text> disabled</text> }>
-            <span class="page-link" asp-action="AllRecipes" asp-route-id="@Model.PreviousPageNumber">Previous</span>
-        </li>
-        @for (int i = Model.PageNumber - 3; i < Model.PageNumber; i++)
-        {
-            if (i > 0)
-            {
-                <li class="page-item"><a class="page-link" asp-action="AllRecipes" asp-route-id="@i">@i</a></li>
-            }
-        }
-        <li class="page-item active">
-            <span class="page-link">
-                @Model.PageNumber
-                <span class="sr-only">(current)</span>
-            </span>
-        </li>
-        @for (int i = Model.PageNumber + 1; i <= Model.PageNumber + 3; i++)
-        {
-            if (i <= Model.PagesCount)
-            {
-                <li class="page-item"><a class="page-link" asp-action="AllRecipes" asp-route-id="@i">@i</a></li>
-            }
-        }
-        <li class="page-item" @if (!Model.HasNextPage) { <text> disabled</text> }>
-            <a class="page-link" asp-action="AllRecipes" asp-route-id="@Model.NextPageNumber">Next</a>
-        </li>
-    </ul>
-</nav>
+<partial name="_PagingPartial" model="@Model" />
 
 @Model.RecipesCount
 @Model.PagesCount
