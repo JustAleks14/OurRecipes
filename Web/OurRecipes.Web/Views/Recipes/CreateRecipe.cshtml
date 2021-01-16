@@ -64,14 +64,14 @@
         var ingredientIndex = 0;
         function AddIngredient() {
             $("#IngredientsContainer")
-                .append("<div class='form-control'>Name: <input type='text' name='Ingredients[" + ingredientIndex + "]' /></div>");
+                .append("<div class='form-control'>Name: <input type='text' name='Ingredients[" + ingredientIndex + "].Name' /></div>");
             ingredientIndex++;
         }
-
+        
         var stepIndex = 0;
         function AddSteps() {
             $("#StepsContainer")
-                .append("<div class='form-control'>Name: <input type='text' name='Ingredients[" + stepIndex + "]' /></div>");
+                .append("<div class='form-control'>Name: <input type='text' name='Steps[" + stepIndex + "].Description' /></div>");
             stepIndex++;
         }
     </script>
