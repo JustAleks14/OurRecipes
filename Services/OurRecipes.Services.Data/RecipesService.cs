@@ -31,17 +31,19 @@
 
         public RecipeInfoViewModel GetRecipeInfo(int id)
         {
-            var recipe = this.recipesRepository.AllAsNoTrackingWithDeleted().FirstOrDefault(x => x.Id == id);
-
+            var recipe = this.recipesRepository.AllAsNoTracking().FirstOrDefault(x => x.Id == id);
+            var ingredients = this.ingredientsRespository.AllAsNoTracking().Where(x => x.Recipe.Id == id).ToList();
+            var steps = this.stepsRespository.AllAsNoTracking().Where(x => x.Recipe.Id == id).ToList();
             var info = new RecipeInfoViewModel
             {
+                Name = recipe.Name,
                 Time = recipe.Time.Minutes,
                 MealCount = recipe.MealCount,
                 CreatedOn = recipe.CreatedOn,
                 Image = recipe.Image,
                 DifficultyLevel = recipe.DifficultyLevel,
-                Ingredients = recipe.Ingredients,
-                Steps = recipe.Steps,
+                Ingredients = ingredients,
+                Steps = steps,
             };
 
             return info;
@@ -49,7 +51,7 @@
 
         public async Task CreateAsync(RecipeInputModel input, ApplicationUser user)
         {
-            TimeSpan ts = new TimeSpan(input.Time);
+            TimeSpan ts = new TimeSpan(0, 0, input.Time, 0, 0);
             var recipe = new Recipe
             {
                 Name = input.Name,

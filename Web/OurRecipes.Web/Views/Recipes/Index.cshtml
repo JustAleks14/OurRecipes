@@ -1,7 +1,10 @@
 ﻿@model OurRecipes.Web.ViewModels.Recipes.RecipeInfoViewModel
+@{
+    this.ViewData["Title"] = $"Recipe Info";
+}
 <body>
     <!-- ##### Breadcumb Area Start ##### -->
-    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fb%2Fb6%2FImage_created_with_a_mobile_phone.png%2F1200px-Image_created_with_a_mobile_phone.png&imgrefurl=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FImage&tbnid=gxFxsvFBmxeZ9M&vet=12ahUKEwj7wsvRwKDuAhVG4oUKHR2oDW0QMygAegUIARDSAQ..i&docid=0JWe7yDOKrVFAM&w=1200&h=900&q=image&ved=2ahUKEwj7wsvRwKDuAhVG4oUKHR2oDW0QMygAegUIARDSAQ);">
+    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(@Model.Image);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -13,7 +16,7 @@
         </div>
     </div>
     <!-- ##### Breadcumb Area End ##### -->
-
+    <hr/>
     <div class="receipe-post-area section-padding-80">
 
         <!-- Receipe Content Area -->
@@ -23,26 +26,18 @@
                 <div class="row">
                     <div class="col-12 col-md-8">
                         <div class="receipe-headline my-5">
-                            <span>April 05, 2018</span>
-                            <h2>Fruit Mix</h2>
+                            <span>@Model.CreatedOn.ToLocalTime()</span>
+                            <h2>@Model.Name</h2>
                             <div class="receipe-duration">
-                                <h6>Prep: 5 mins</h6>
-                                <h6>Cook: 10 mins</h6>
-                                <h6>Content: 3 Servings</h6>
+                                <h6>Cooking: @Model.Time minutes</h6>
+                                <h6>Content: @Model.MealCount Portion</h6>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-4">
                         <div class="receipe-ratings text-right my-5">
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <a href="#" class="btn delicious-btn">For Beginners</a>
+                            <a class="btn delicious-btn">@Model.DifficultyLevel</a>
                         </div>
                     </div>
                 </div>
@@ -54,7 +49,7 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage">
                                     <div class="owl-item active" style="width:100%; padding-bottom:50px;">
-                                        <img src="img/bg-img/bg5.jpg" alt="">
+                                        <img src="@Model.Image" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -65,74 +60,34 @@
                 <div class="row">
                     <div class="col-12 col-lg-8">
                         <!-- Single Preparation Step -->
-                        <div class="single-preparation-step d-flex">
-                            <h4>01.</h4>
-                            <p>Wash the vegetables and prepare a large enough plate.</p>
+                        <div class="col-12 col-lg-4">
+                            <div class="">
+                                <h4>Steps</h4>
+                                @{int i = 1;}
+                                @foreach (var step in this.Model.Steps)
+                                {
+                                    <div class="single-preparation-step d-flex">
+                                        <p style="margin-top: 20px; font-size:20px;">@i @step.Description</p>
+                                    </div>
+                                    i++;
+                                }
+                            </div>
                         </div>
-                        <!-- Single Preparation Step -->
-                        <div class="single-preparation-step d-flex">
-                            <h4>02.</h4>
-                            <p>Mix everything in the plate.</p>
-                        </div>
-                        <!-- Single Preparation Step -->
-                        <div class="single-preparation-step d-flex">
-                            <h4>03.</h4>
-                            <p>Add some spices by your liking and it's all done!</p>
-                        </div>
-                    </div>
-
-                    <!-- Ingredients -->
-                    <div class="col-12 col-lg-4">
-                        <div class="ingredients">
-                            <h4>Ingredients</h4>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">1 tbsp olive oil</label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                <label class="custom-control-label" for="customCheck2">1/4 tbsp cinnamon</label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                <label class="custom-control-label" for="customCheck3">2 yogurt containers</label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                <label class="custom-control-label" for="customCheck4">1 cup fresh berries</label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                <label class="custom-control-label" for="customCheck5">1 cup fresh blueberries</label>
-                            </div>
-
-                            <!-- Custom Checkbox -->
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck6">
-                                <label class="custom-control-label" for="customCheck6">1 cup fresh blackberries</label>
+                        <!-- Ingredients -->
+                        <div class="col-12 col-lg-4">
+                            <div class="ingredients">
+                                <h4>Ingredients</h4>
+                                @foreach (var ingredient in this.Model.Ingredients)
+                                {
+                                    <!-- Custom Checkbox -->
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">@ingredient.Name</label>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section-heading text-left">
-                            <h3>Leave A Comment</h3>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="row">
                     <div class="col-12">
                         <div class="contact-form-area">
@@ -161,4 +116,5 @@
             </div>
         </div>
     </div>
+</div>
 </body>
