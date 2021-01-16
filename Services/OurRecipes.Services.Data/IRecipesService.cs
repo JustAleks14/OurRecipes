@@ -5,11 +5,12 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using OurRecipes.Data.Models;
     using OurRecipes.Web.ViewModels.Recipes;
 
     public interface IRecipesService
     {
-        Task CreateAsync(RecipeInputModel input, string userId);
+        Task CreateAsync(RecipeInputModel input, ApplicationUser user);
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12);
 

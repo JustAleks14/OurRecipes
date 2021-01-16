@@ -1,6 +1,11 @@
 ﻿namespace OurRecipes.Web.Controllers
 {
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using OurRecipes.Data.Models;
     using OurRecipes.Services.Data;
     using OurRecipes.Web.ViewModels;
     using OurRecipes.Web.ViewModels.Recipes;
@@ -8,10 +13,12 @@
     public class RecipesController : BaseController
     {
         private readonly IRecipesService recipesService;
+        private UserManager<ApplicationUser> userManager;
 
-        public RecipesController(IRecipesService recipesService)
+        public RecipesController(IRecipesService recipesService, UserManager<ApplicationUser> userManager)
         {
             this.recipesService = recipesService;
+            this.userManager = userManager;
         }
 
         public IActionResult Index()
@@ -24,12 +31,14 @@
             return this.View();
         }
 
-<<<<<<< HEAD
         [HttpPost]
-        public IActionResult CreateRecipe(RecipeInputModel input)
+        public async Task<IActionResult> CreateRecipe(RecipeInputModel input)
         {
+            var user = await this.userManager.GetUserAsync(this.User);
+            await this.recipesService.CreateAsync(input, user);
             return this.View();
-=======
+        }
+
         public IActionResult AllRecipes(int id = 1)
         {
             if (id <= 0)
@@ -46,7 +55,6 @@
                 Recipes = this.recipesService.GetAll<AllRecipesViewModel>(id, ItemsPerPage),
             };
             return this.View(viewModel);
->>>>>>> 7920a3eae0466c1689951c8b412816d5cec9768c
         }
     }
 }

@@ -26,7 +26,7 @@
             this.stepsRespository = stepsRespository;
         }
 
-        public async Task CreateAsync(RecipeInputModel input, string userId)
+        public async Task CreateAsync(RecipeInputModel input, ApplicationUser user)
         {
             TimeSpan ts = new TimeSpan(input.Time);
             var recipe = new Recipe
@@ -36,6 +36,7 @@
                 Image = input.Image,
                 DifficultyLevel = input.DifficultyLevel,
                 Time = ts,
+                Chief = user,
             };
 
             foreach (var inputIngredient in input.Ingredients)
