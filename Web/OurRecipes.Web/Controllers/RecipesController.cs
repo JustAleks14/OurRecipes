@@ -21,9 +21,10 @@
             this.userManager = userManager;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            return this.View();
+            var info = this.recipesService.GetRecipeInfo(id);
+            return this.View(info);
         }
 
         public IActionResult CreateRecipe()
@@ -36,7 +37,7 @@
         {
             var user = await this.userManager.GetUserAsync(this.User);
             await this.recipesService.CreateAsync(input, user);
-            return this.View();
+            return this.RedirectToAction("AllRecipes");
         }
 
         public IActionResult AllRecipes(int id = 1)

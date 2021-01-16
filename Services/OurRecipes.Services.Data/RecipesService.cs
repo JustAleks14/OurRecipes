@@ -26,6 +26,24 @@
             this.stepsRespository = stepsRespository;
         }
 
+        public RecipeInfoViewModel GetRecipeInfo(int id)
+        {
+            var recipe = this.recipesRepository.AllAsNoTrackingWithDeleted().FirstOrDefault(x => x.Id == id);
+
+            var info = new RecipeInfoViewModel
+            {
+                Time = recipe.Time.Minutes,
+                MealCount = recipe.MealCount,
+                CreatedOn = recipe.CreatedOn,
+                Image = recipe.Image,
+                DifficultyLevel = recipe.DifficultyLevel,
+                Ingredients = recipe.Ingredients,
+                Steps = recipe.Steps,
+            };
+
+            return info;
+        }
+
         public async Task CreateAsync(RecipeInputModel input, ApplicationUser user)
         {
             TimeSpan ts = new TimeSpan(input.Time);
