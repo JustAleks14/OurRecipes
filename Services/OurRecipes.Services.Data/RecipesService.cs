@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+
     using OurRecipes.Data.Common.Repositories;
     using OurRecipes.Data.Models;
     using OurRecipes.Services.Mapping;
@@ -15,6 +16,7 @@
         private readonly IDeletableEntityRepository<Recipe> recipesRepository;
         private readonly IDeletableEntityRepository<Ingredient> ingredientsRespository;
         private readonly IDeletableEntityRepository<Step> stepsRespository;
+        private Random rnd;
 
         public RecipesService(
             IDeletableEntityRepository<Recipe> recipesRepository,
@@ -24,6 +26,7 @@
             this.recipesRepository = recipesRepository;
             this.ingredientsRespository = ingredientsRespository;
             this.stepsRespository = stepsRespository;
+            this.rnd = new Random();
         }
 
         public RecipeInfoViewModel GetRecipeInfo(int id)
@@ -90,6 +93,19 @@
                 .Skip((page - 1) * itemsPerPage).Take(itemsPerPage)
                 .To<T>()
                 .ToList();
+            return recipes;
+        }
+
+        public List<AllRecipesViewModel> GetAll(int recipesCount)
+        {
+            List<AllRecipesViewModel> recipes = new List<AllRecipesViewModel>();
+            for (int i = 0; i < 6; i++)
+            {
+                int random = this.rnd.Next(1, recipesCount + 1);
+                var recipe = this.recipesRepository.AllAsNoTracking().Where(x => x.Id == random).To<AllRecipesViewModel>().FirstOrDefault();
+                recipes.Add(recipe);
+            }
+
             return recipes;
         }
 

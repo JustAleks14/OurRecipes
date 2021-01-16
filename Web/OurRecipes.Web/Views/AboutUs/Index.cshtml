@@ -1,4 +1,8 @@
-﻿<body>
+﻿@model OurRecipes.Web.ViewModels.Recipes.RecipesListViewModel
+@{
+    this.ViewData["Title"] = "About Us";
+}
+<body>
     <!-- ##### Breadcumb Area Start ##### -->
     <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb4.jpg);">
         <div class="container h-100">
@@ -11,45 +15,6 @@
             </div>
         </div>
     </div>
-    <div class="row align-items-center mt-70">
-
-        <!-- Single Cool Fact -->
-        <div class="col-12 col-sm-6 col-lg-3">
-            <div class="single-cool-fact">
-                <img src="img/core-img/hamburger.png" alt="">
-                <h3><span class="counter">14</span></h3>
-                <h6>Amazing Recipes</h6>
-            </div>
-        </div>
-
-        <!-- Single Cool Fact -->
-        <div class="col-12 col-sm-6 col-lg-3">
-            <div class="single-cool-fact">
-                <img src="img/core-img/salad.png" alt="">
-                <h3><span class="counter">14</span></h3>
-                <h6>Vegan Recipes</h6>
-            </div>
-        </div>
-
-        <!-- Single Cool Fact -->
-        <div class="col-12 col-sm-6 col-lg-3">
-            <div class="single-cool-fact">
-                <img src="img/core-img/rib.png" alt="">
-                <h3><span class="counter">14</span></h3>
-                <h6>Non-Vegan Recipes</h6>
-            </div>
-        </div>
-
-        <!-- Single Cool Fact -->
-        <div class="col-12 col-sm-6 col-lg-3">
-            <div class="single-cool-fact">
-                <img src="img/core-img/pancake.png" alt="">
-                <h3><span class="counter">14</span></h3>
-                <h6>Dessert Recipes</h6>
-            </div>
-        </div>
-    </div>
-
     <!-- ##### Breadcumb Area End ##### -->
     <!-- ##### Contact Information Area Start ##### -->
     <div class="contact-information-area section-padding-80">
@@ -61,8 +26,25 @@
                         <p>We are a team of two highschoolers with high ambitions. That is our first website and there are more to come.</p>
                         <p>Do not hesitate to give us feedback so we can improve our site.</p>
                     </div>
+                    <!-- Single Cool Fact -->
+                    <div class="row align-items-center mt-70">
+                        <div class=""  style="visibility:hidden">
+                            <div class="single-cool-fact">
+                                <img src="img/core-img/hamburger.png" alt="">
+                                <h3><span class="counter">14</span></h3>
+                                <h6>Amazing Recipes</h6>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="single-cool-fact">
+                                <img src="img/core-img/hamburger.png" alt="">
+                                <h3><span class="counter">@Model.RecipesCount</span></h3>
+                                <h6>Amazing Recipes</h6>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
+                
                 <div class="col-12 col-lg-3">
                     <!-- Single Contact Information -->
                     <div class="single-contact-information mb-30">

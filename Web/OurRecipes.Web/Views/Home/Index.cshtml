@@ -1,4 +1,5 @@
 ﻿@using OurRecipes.Common
+@model OurRecipes.Web.ViewModels.Recipes.RecipesListViewModel
 @{
     this.ViewData["Title"] = "Home Page";
 }
@@ -51,118 +52,19 @@
 
         <div class="row">
             <!-- Single Best Receipe Area -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="single-best-receipe-area mb-30">
-                    <img src="img/bg-img/r1.jpg" alt="">
-                    <div class="receipe-content">
-                        <a href="receipe-post.html">
-                            <h5>Gourmet Sea Food</h5>
-                        </a>
-                        <div class="ratings">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
+            @foreach (var recipe in this.Model.Recipes)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        <img src="@recipe.Image" alt="">
+                        <div class="receipe-content">
+                            <a href="receipe-post.html">
+                                <h5>@recipe.Name</h5>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Single Best Receipe Area -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="single-best-receipe-area mb-30">
-                    <img src="img/bg-img/r2.jpg" alt="">
-                    <div class="receipe-content">
-                        <a href="receipe-post.html">
-                            <h5>"Cry" Burger</h5>
-                        </a>
-                        <div class="ratings">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Best Receipe Area -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="single-best-receipe-area mb-30">
-                    <img src="img/bg-img/r3.jpg" alt="">
-                    <div class="receipe-content">
-                        <a href="receipe-post.html">
-                            <h5>"Bloody" Smoothie</h5>
-                        </a>
-                        <div class="ratings">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Best Receipe Area -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="single-best-receipe-area mb-30">
-                    <img src="img/bg-img/r4.jpg" alt="">
-                    <div class="receipe-content">
-                        <a href="receipe-post.html">
-                            <h5>Tripe Soup</h5>
-                        </a>
-                        <div class="ratings">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Best Receipe Area -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="single-best-receipe-area mb-30">
-                    <img src="img/bg-img/r5.jpg" alt="">
-                    <div class="receipe-content">
-                        <a href="receipe-post.html">
-                            <h5>Homemade Breakfast</h5>
-                        </a>
-                        <div class="ratings">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Best Receipe Area -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="single-best-receipe-area mb-30">
-                    <img src="img/bg-img/r6.jpg" alt="">
-                    <div class="receipe-content">
-                        <a href="receipe-post.html">
-                            <h5>Healthy Fruit Dessert</h5>
-                        </a>
-                        <div class="ratings">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
@@ -176,7 +78,7 @@
                 <div class="cta-content text-center">
                     <h2>All Recipes</h2>
                     <p>Take a break from the grey and repeated lifestyle! Craft something delicious for you or your loved ones that shows the creativity of your soul.</p>
-                    <a href="#" class="btn delicious-btn">Discover All The Recipes</a>
+                    <a asp-action="AllRecipes" asp-controller="Recipes" class="btn delicious-btn">Discover All The Recipes</a>
                 </div>
             </div>
         </div>

@@ -16,6 +16,8 @@
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12);
 
+        List<AllRecipesViewModel> GetAll(int recipesCount);
+
         int GetCount();
     }
 }
