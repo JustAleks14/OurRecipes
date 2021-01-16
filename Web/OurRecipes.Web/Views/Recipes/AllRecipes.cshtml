@@ -8,22 +8,22 @@
 <section class="small-receipe-area section-padding-80-0">
     <div class="container">
         <div class="row">
-            @foreach(var recipe in this.Model.Recipes)
+            @foreach (var recipe in this.Model.Recipes)
             {
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-small-receipe-area d-flex">
-                        <div class="receipe-thumb" style="width: 100px; height:100px;">
-                            <img src="@recipe.Image" alt="">
-                        </div>
-                        <div class="receipe-content">
-                            <span>@recipe.CreatedOn</span>
-                            <a href="receipe-post.html">
-                                <h5>@recipe.Name</h5>
-                            </a>
-                            <p>@recipe.CommentsCount</p>
-                        </div>
-                    </div>
-                </div>
+                 <div class="col-12 col-sm-6 col-lg-4">
+                     <div class="single-small-receipe-area d-flex">
+                         <div class="receipe-thumb" style="width: 100px; height: 100px;">
+                             <img src="@recipe.Image" alt="">
+                         </div>
+                         <div class="receipe-content">
+                             <span>@recipe.CreatedOn</span>
+                             <a asp-controller="Recipes" asp-action="Index" asp-route-id="@recipe.Id">
+                                 <h5>@recipe.Name</h5>
+                             </a>
+                             <p>@recipe.CommentsCount</p>
+                         </div>
+                     </div>
+                 </div>
             }
         </div>
     </div>
