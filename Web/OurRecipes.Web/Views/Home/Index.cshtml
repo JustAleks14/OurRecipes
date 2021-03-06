@@ -14,10 +14,9 @@
             <!-- Single Best Receipe Area -->
             @foreach (var recipe in this.Model.Recipes)
             {
-<<<<<<< HEAD
                 if (recipe != null)
                 {
-                    <div style="top: 50px;" class="col-12 col-sm-6 col-lg-4">      
+                    <div style="top: 50px;" class="col-12 col-sm-6 col-lg-4">
                         <div class="single-best-receipe-area mb-30">
                             <img style="height:300px; width:350px;" src="@recipe.Image" alt="">
                             <div class="receipe-content">
@@ -25,15 +24,6 @@
                                     <h5>@recipe.Name</h5>
                                 </a>
                             </div>
-=======
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="@recipe.Image" alt="lol">
-                        <div class="receipe-content">
-                            <a asp-controller="Recipes" asp-action="Index" asp-route-id="@recipe.Id">
-                                <h5>@recipe.Name</h5>
-                            </a>
->>>>>>> 563a70eb11788b1ad995724a47a44a819d667ed8
                         </div>
                     </div>
                 }
