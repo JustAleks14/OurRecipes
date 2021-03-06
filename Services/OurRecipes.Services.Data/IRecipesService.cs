@@ -18,6 +18,8 @@
 
         List<AllRecipesViewModel> GetAll(int recipesCount);
 
+        void Delete(int id);
+
         int GetCount();
     }
 }

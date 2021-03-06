@@ -10,20 +10,22 @@
         <div class="row">
             @foreach (var recipe in this.Model.Recipes)
             {
-                 <div class="col-12 col-sm-6 col-lg-4">
-                     <div class="single-small-receipe-area d-flex">
-                         <div class="receipe-thumb" style="width: 100px; height: 100px;">
-                             <img src="@recipe.Image" alt="">
-                         </div>
-                         <div class="receipe-content">
-                             <span>@recipe.CreatedOn.ToLocalTime()</span>
-                             <a asp-controller="Recipes" asp-action="Index" asp-route-id="@recipe.Id">
-                                 <h5>@recipe.Name</h5>
-                             </a>
-                             @*<p>@recipe.CommentsCount</p>*@
-                         </div>
-                     </div>
-                 </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-small-receipe-area d-flex">
+                        <div class="receipe-thumb" style="width: 100px; height: 100px;">
+                            <img src="@recipe.Image" alt="">
+                        </div>
+                        <div class="receipe-content">
+                            <span>@recipe.CreatedOn.ToLocalTime()</span>
+                            <a asp-controller="Recipes" asp-action="Index" asp-route-id="@recipe.Id">
+                                <h5>@recipe.Name</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <form method="post">
+                    <input class="btn btn-outline-danger btn-block" style="width:100%; height:35px;" asp-controller="Recipes" asp-action="Delete" asp-route-id="@recipe.Id" type="submit" value="Delete" />
+                </form>
             }
         </div>
     </div>

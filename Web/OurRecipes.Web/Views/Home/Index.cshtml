@@ -7,68 +7,31 @@
 <div class="text-center">
     <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
 </div>
-<!-- ##### Top Catagory Area Start ##### -->
-<section class="top-catagory-area section-padding-80-0">
-    <div class="container">
-        <div class="row">
-            <!-- Top Catagory Area -->
-            <div class="col-12 col-lg-6">
-                <div class="single-top-catagory">
-                    <img src="https://images.food52.com/N_XfeiSn7Vg1ZgPKzPRvYZXSdLs=/530x354/ca411340-d7a1-4572-92dd-0e9147876081--Sauce_2.jpg" alt="">
-                    <!-- Content -->
-                    <div class="top-cta-content">
-                        <h3>Test123</h3>
-                        <h6>Simple &amp; Delicious</h6>
-                        <a href="receipe-post.html" class="btn delicious-btn">See Full Recipe</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Top Catagory Area -->
-            <div class="col-12 col-lg-6">
-                <div class="single-top-catagory">
-                    <img src="https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/63/2018/07/Cheap-family-meals-Recipes-under-%C2%A31-per-head-scaled.jpg" alt="">
-                    <!-- Content -->
-                    <div class="top-cta-content">
-                        <h3>Something</h3>
-                        <h6>Simple &amp; Delicious</h6>
-                        <a href="receipe-post.html" class="btn delicious-btn">See Full Recipe</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ##### Top Catagory Area End ##### -->
-<!-- ##### Best Receipe Area Start ##### -->
+<!-- ##### Top Receipe Area Start ##### -->
 <section class="best-receipe-area">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-heading">
-                    <h3>Best Recipes</h3>
-                </div>
-            </div>
-        </div>
-
         <div class="row">
             <!-- Single Best Receipe Area -->
             @foreach (var recipe in this.Model.Recipes)
             {
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="@recipe.Image" alt="">
-                        <div class="receipe-content">
-                            <a asp-controller="Recipes" asp-action="Index" asp-route-id="@recipe.Id">
-                                <h5>@recipe.Name</h5>
-                            </a>
+                if (recipe != null)
+                {
+                    <div style="top: 50px;" class="col-12 col-sm-6 col-lg-4">      
+                        <div class="single-best-receipe-area mb-30">
+                            <img style="height:300px; width:350px;" src="@recipe.Image" alt="">
+                            <div class="receipe-content">
+                                <a asp-controller="Recipes" asp-action="Index" asp-route-id="@recipe.Id">
+                                    <h5>@recipe.Name</h5>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             }
         </div>
     </div>
 </section>
-<!-- ##### Best Receipe Area End ##### -->
+<!-- ##### Top Receipe Area End ##### -->
 <!-- ##### CTA Area Start ##### -->
 <section class="cta-area bg-img bg-overlay" style="background-image: url(img/bg-img/bg4.jpg);">
     <div class="container h-100">

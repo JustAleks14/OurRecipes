@@ -60,5 +60,13 @@
             };
             return this.View(viewModel);
         }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Delete(int id)
+        {
+            this.recipesService.Delete(id);
+            return this.RedirectToAction("AllRecipes");
+        }
     }
 }

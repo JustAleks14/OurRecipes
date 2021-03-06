@@ -101,14 +101,32 @@
         public List<AllRecipesViewModel> GetAll(int recipesCount)
         {
             List<AllRecipesViewModel> recipes = new List<AllRecipesViewModel>();
-            for (int i = 0; i < 6; i++)
+            int i = 0;
+            List<int> recipesId = new List<int>(); 
+            for (; ;)
             {
                 int random = this.rnd.Next(1, recipesCount + 1);
                 var recipe = this.recipesRepository.AllAsNoTracking().Where(x => x.Id == random).To<AllRecipesViewModel>().FirstOrDefault();
-                recipes.Add(recipe);
+                if (recipe is not null && !recipesId.Contains(recipe.Id))
+                {
+                    i++;
+                    recipes.Add(recipe);
+                    recipesId.Add(recipe.Id);
+                }
+
+                if (i == 6)
+                {
+                    break;
+                }
             }
 
             return recipes;
+        }
+
+        public void Delete(int id)
+        {
+            this.recipesRepository.Delete(this.recipesRepository.All().FirstOrDefault(x => x.Id == id));
+            this.recipesRepository.SaveChangesAsync().Wait();
         }
 
         public int GetCount()
